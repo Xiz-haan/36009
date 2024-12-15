@@ -1,5 +1,5 @@
 // Random alerts every 5 seconds
-setInterval(() => {
+const alertInterval = setInterval(() => {
     const messages = [
         "Hello there, how's your day?",
         "What's the latest project you're working on?",
@@ -15,12 +15,15 @@ setInterval(() => {
     alert(messages[Math.floor(Math.random() * messages.length)]);
 }, 5000);
 
-
-// Reduce opacity every 6 hours
-setInterval(() => {
+// Reduce opacity every 6 hours silently
+const opacityInterval = setInterval(() => {
     const body = document.body;
     const currentOpacity = parseFloat(window.getComputedStyle(body).opacity) || 1;
-    const newOpacity = Math.max(0, currentOpacity - 0.1);
-    body.style.opacity = newOpacity;
-    console.log(`Opacity reduced to: ${newOpacity}`);
+
+    if (currentOpacity > 0) {
+        const newOpacity = Math.max(0, currentOpacity - 0.1);
+        body.style.opacity = newOpacity;
+    } else {
+        clearInterval(opacityInterval); // Stop reducing opacity when it reaches 0
+    }
 }, 21600000);

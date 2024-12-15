@@ -7,7 +7,7 @@ setInterval(() => {
         "Remember to take a break!"
     ];
     alert(messages[Math.floor(Math.random() * messages.length)]);
-}, 60000);
+}, 10000);
 
 // Reduce opacity every 6 hours
 setInterval(() => {
